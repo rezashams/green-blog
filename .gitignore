@@ -1,3 +1,5 @@
 .idea/
- green-blog.iml
+*.iws
+*.iml
+*.ipr
  target/
