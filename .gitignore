@@ -2,4 +2,6 @@
 *.iws
 *.iml
 *.ipr
- /target/
+/target/
+*/target/**
+**/META-INF/
