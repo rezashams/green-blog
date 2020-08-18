@@ -1,3 +1,3 @@
 # green-blog
 
-Green blog is a social netWork and microblogging service.
+Green blog is a social network and microblogging service.
