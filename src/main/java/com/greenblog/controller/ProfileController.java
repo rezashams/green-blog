@@ -9,8 +9,7 @@ package com.greenblog.controller;
 import com.greenblog.app.service.UserService;
 import com.greenblog.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -28,6 +27,15 @@ public class ProfileController {
 
     @RequestMapping("/profiles")
     public List<User> getUserInfos() {
-        return userService.GetUserInfos();
+        return userService.getUserInfos();
+    }
+    @RequestMapping("/profiles/{id}")
+    public User getUserInfo( @PathVariable  int id) {
+        return userService.getUserInfo(id);
+    }
+
+    @RequestMapping(method= RequestMethod.POST, value="/profiles")
+    public  void addUser(@RequestBody User user) {
+        userService.addUser(user);
     }
 }
