@@ -29,7 +29,8 @@ public class ProfileController {
     public List<User> getUserInfos() {
         return userService.getUserInfos();
     }
-    @RequestMapping("/profiles/{id}")
+
+    @RequestMapping( "/profiles/{id}")
     public User getUserInfo( @PathVariable  int id) {
         return userService.getUserInfo(id);
     }
@@ -37,5 +38,15 @@ public class ProfileController {
     @RequestMapping(method= RequestMethod.POST, value="/profiles")
     public  void addUser(@RequestBody User user) {
         userService.addUser(user);
+    }
+
+    @RequestMapping(method=RequestMethod.PUT,value="/profiles/{id}")
+    public void updateUser(@RequestBody User user,@PathVariable int id) {
+        userService.updateUser(id, user);
+    }
+
+    @RequestMapping(method=RequestMethod.DELETE,value="/profiles/{id}")
+    public void deleteUser(@PathVariable int id) {
+        userService.deleteUser(id);
     }
 }

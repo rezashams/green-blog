@@ -30,4 +30,16 @@ public class UserService {
     public void addUser(User user) {
         this.users.add(user);
     }
+
+    public void updateUser(int id, User user) {
+        for(int i=0; i<users.size(); i++)
+            if(users.get(i).getId() == id) {
+                users.set(i, user);
+                return;
+            }
+    }
+
+    public void deleteUser(int id) {
+        users.removeIf(t -> t.getId() == id);
+    }
 }
