@@ -6,7 +6,13 @@
  */
 package com.greenblog.model;
 
+import org.springframework.data.annotation.Id;
+
+import javax.persistence.Entity;
+
+@Entity
 public class User {
+    @Id
     private int id;
     private String name;
     private String lastName;
