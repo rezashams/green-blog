@@ -7,39 +7,38 @@
 package com.greenblog.app.service;
 
 import com.greenblog.model.User;
+import com.greenblog.repository.UserRepo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.jws.soap.SOAPBinding;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @Service
 public class UserService {
 
-    private List<User> users = new ArrayList<>(Arrays.asList(new User[] { new User(1,"reza","shams","rezashams86@gmail.com"),
-            new User(2,"Javad","Khosravian","javadKhosravian@gmail.com")}));
+    @Autowired
+    private UserRepo userRepo;
 
-    public  List<User> getUserInfos(){
+    public  List<User> getUsers(){
+        List<User> users = new ArrayList<>();
+        userRepo.findAll().forEach(users::add);
         return users;
     }
-    public User getUserInfo(int id) {
-        return users.stream().filter(t->t.getId()==id).findFirst().get();
+    public User getUser(int id) {
+        return userRepo.findById(id).get();
     }
 
     public void addUser(User user) {
-        this.users.add(user);
+        userRepo.save(user);
     }
 
     public void updateUser(int id, User user) {
-        for(int i=0; i<users.size(); i++)
-            if(users.get(i).getId() == id) {
-                users.set(i, user);
-                return;
-            }
+        userRepo.save(user);
     }
 
     public void deleteUser(int id) {
-        users.removeIf(t -> t.getId() == id);
+        userRepo.deleteById(id);
+        //users.removeIf(t -> t.getId() == id);
     }
 }

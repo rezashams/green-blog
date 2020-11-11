@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-public class ProfileController {
+public class UserController {
 
     @Autowired
     private UserService userService;
@@ -27,12 +27,12 @@ public class ProfileController {
 
     @RequestMapping("/profiles")
     public List<User> getUserInfos() {
-        return userService.getUserInfos();
+        return userService.getUsers();
     }
 
     @RequestMapping( "/profiles/{id}")
     public User getUserInfo( @PathVariable  int id) {
-        return userService.getUserInfo(id);
+        return userService.getUser(id);
     }
 
     @RequestMapping(method= RequestMethod.POST, value="/profiles")
