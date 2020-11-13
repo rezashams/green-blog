@@ -6,16 +6,25 @@
  */
 package com.greenblog.model;
 
-import org.springframework.data.annotation.Id;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "user_gb")
 public class User {
+
     @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    @Column(name = "id")
     private int id;
+
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "lastname")
     private String lastName;
+
+    @Column(name = "emp_id")
     private String email;
 
     public User() {
@@ -60,6 +69,5 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
-
 
 }

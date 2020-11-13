@@ -6,7 +6,7 @@
  */
 package com.greenblog.controller;
 
-import com.greenblog.app.service.UserService;
+import com.greenblog.service.UserService;
 import com.greenblog.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -18,12 +18,7 @@ public class UserController {
 
     @Autowired
     private UserService userService;
-
-
-    @RequestMapping("/profile")
-    public User getUserInfo() {
-         return new User(1,"reza","shams","rezashams86@gmail.com");
-     }
+    
 
     @RequestMapping("/profiles")
     public List<User> getUserInfos() {

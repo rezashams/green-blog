@@ -4,7 +4,7 @@
  * Created by IntelliJ IDEA.
  * @author: Reza Shams <rezashams86@gmail.com>
  */
-package com.greenblog.app.service;
+package com.greenblog.service;
 
 import com.greenblog.model.User;
 import com.greenblog.repository.UserRepo;
