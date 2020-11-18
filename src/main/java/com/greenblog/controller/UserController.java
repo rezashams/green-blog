@@ -18,7 +18,7 @@ public class UserController {
 
     @Autowired
     private UserService userService;
-    
+
 
     @RequestMapping("/profiles")
     public List<User> getUserInfos() {
