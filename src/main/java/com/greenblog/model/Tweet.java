@@ -17,13 +17,13 @@ public class Tweet {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     @Column(name = "id")
-    private int id;
+    private Long id;
 
     @Column(name = "content")
     private String content;
 
     @Column(name = "user_id")
-    private int userId;
+    private Long userId;
 
     @Column(name = "created_at")
     private Date createdAt;
@@ -34,7 +34,7 @@ public class Tweet {
     public Tweet() {
     }
 
-    public Tweet(int id, String content, int userId, Date createdAt, Date updatedAt) {
+    public Tweet(Long id, String content, Long userId, Date createdAt, Date updatedAt) {
         this.id = id;
         this.content = content;
         this.userId = userId;
@@ -42,11 +42,11 @@ public class Tweet {
         this.updatedAt = updatedAt;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -58,11 +58,11 @@ public class Tweet {
         this.content = content;
     }
 
-    public int getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
     }
 
