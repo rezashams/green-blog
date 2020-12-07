@@ -7,6 +7,7 @@
 package com.greenblog.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.sql.Date;
 import java.util.Objects;
 
@@ -22,12 +23,15 @@ public class Tweet {
     @Column(name = "content")
     private String content;
 
+    @NotNull
     @Column(name = "user_id")
     private Long userId;
 
+    @NotNull
     @Column(name = "created_at")
     private Date createdAt;
 
+    @NotNull
     @Column(name = "updated_at")
     private Date updatedAt;
 

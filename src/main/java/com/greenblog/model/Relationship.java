@@ -9,6 +9,7 @@ package com.greenblog.model;
 import com.greenblog.model.compositeKey.RelationshipKey;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.sql.Date;
 import java.util.Objects;
 
@@ -18,9 +19,11 @@ public class Relationship {
     @EmbeddedId
     RelationshipKey id;
 
+    @NotNull
     @Column(name = "created_at")
     private Date createdAt;
 
+    @NotNull
     @Column(name = "updated_at")
     private Date updatedAt;
 
@@ -96,5 +99,16 @@ public class Relationship {
     @Override
     public int hashCode() {
         return Objects.hash(getId(), getCreatedAt(), getUpdatedAt(), getFollowedUser(), getFollowerUser());
+    }
+
+    @Override
+    public String toString() {
+        return "Relationship{" +
+                "id=" + id +
+                ", createdAt=" + createdAt +
+                ", updatedAt=" + updatedAt +
+                ", followedUser=" + followedUser +
+                ", followerUser=" + followerUser +
+                '}';
     }
 }
