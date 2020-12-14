@@ -23,6 +23,10 @@ public class User {
     private Long id;
 
     @NotNull
+    @Column(name = "username")
+    private String username;
+
+    @NotNull
     @Column(name = "name")
     private String name;
 
@@ -35,6 +39,13 @@ public class User {
     private String email;
 
     @NotNull
+    @Column(name = "password")
+    private String password;
+
+    @Column(name = "remember_token")
+    private String rememberToken;
+
+    @NotNull
     @Column(name = "created_at")
     private Date createdAt;
 
@@ -42,30 +53,30 @@ public class User {
     @Column(name = "updated_at")
     private Date updatedAt;
 
-    public User() {
-    }
-
     @OneToMany(mappedBy = "followerUser")
     Set<Relationship>  followedUser;
 
     @OneToMany(mappedBy = "followedUser")
     Set<Relationship>  following;
 
-    public User(Long id, String name, String lastName, String email, Date createdAt, Date updatedAt) {
-        this.id = id;
+    public User() {
+    }
+
+    public User(@NotNull String username, @NotNull String name, @NotNull String lastName, @NotNull String email, @NotNull String password, String rememberToken, @NotNull Date createdAt, @NotNull Date updatedAt, Set<Relationship> followedUser, Set<Relationship> following) {
+        this.username = username;
         this.name = name;
         this.lastName = lastName;
         this.email = email;
+        this.password = password;
+        this.rememberToken = rememberToken;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
+        this.followedUser = followedUser;
+        this.following = following;
     }
 
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -106,6 +117,46 @@ public class User {
 
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public Set<Relationship> getFollowedUser() {
+        return followedUser;
+    }
+
+    public void setFollowedUser(Set<Relationship> followedUser) {
+        this.followedUser = followedUser;
+    }
+
+    public Set<Relationship> getFollowing() {
+        return following;
+    }
+
+    public void setFollowing(Set<Relationship> following) {
+        this.following = following;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getRememberToken() {
+        return rememberToken;
+    }
+
+    public void setRememberToken(String rememberToken) {
+        this.rememberToken = rememberToken;
     }
 
     @Override

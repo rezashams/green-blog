@@ -30,9 +30,9 @@ public class UserController {
         return userService.getUser(id);
     }
 
-    @RequestMapping(method= RequestMethod.POST, value="/profiles")
-    public  void addUser(@RequestBody User user) {
-        userService.addUser(user);
+    @RequestMapping(method= RequestMethod.POST, value="/signup")
+    public  Long addUser(@RequestBody User user) {
+        return userService.addUser(user);
     }
 
     @RequestMapping(method=RequestMethod.PUT,value="/profiles/{id}")

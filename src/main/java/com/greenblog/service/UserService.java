@@ -11,7 +11,9 @@ import com.greenblog.repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 @Service
@@ -29,8 +31,11 @@ public class UserService {
         return userRepo.findById(id).get();
     }
 
-    public void addUser(User user) {
-        userRepo.save(user);
+    public Long addUser(User user) {
+        Date date = new Date(Calendar.getInstance().getTimeInMillis());
+        user.setCreatedAt(date);
+        user.setUpdatedAt(date);
+        return userRepo.save(user).getId();
     }
 
     public void updateUser(int id, User user) {
@@ -39,6 +44,5 @@ public class UserService {
 
     public void deleteUser(int id) {
         userRepo.deleteById(id);
-        //users.removeIf(t -> t.getId() == id);
     }
 }
