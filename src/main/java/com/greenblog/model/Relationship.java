@@ -21,10 +21,12 @@ public class Relationship {
 
     @NotNull
     @Column(name = "created_at")
+    @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
 
     @NotNull
     @Column(name = "updated_at")
+    @Temporal(TemporalType.TIMESTAMP)
     private Date updatedAt;
 
     @ManyToOne
