@@ -10,6 +10,7 @@ package com.greenblog.model;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.sql.Date;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -61,10 +62,15 @@ public class User {
     @OneToMany(mappedBy = "followedUser")
     Set<Relationship>  following;
 
+    @OneToMany(mappedBy = "user")
+    private List<Tweet> tweets;
+
     public User() {
     }
 
-    public User(@NotNull String username, @NotNull String name, @NotNull String lastName, @NotNull String email, @NotNull String password, String rememberToken, @NotNull Date createdAt, @NotNull Date updatedAt, Set<Relationship> followedUser, Set<Relationship> following) {
+    public User(@NotNull String username, @NotNull String name, @NotNull String lastName, @NotNull String email,
+                @NotNull String password, String rememberToken, @NotNull Date createdAt, @NotNull Date updatedAt,
+                Set<Relationship> followedUser, Set<Relationship> following, List<Tweet> tweets) {
         this.username = username;
         this.name = name;
         this.lastName = lastName;
@@ -75,6 +81,7 @@ public class User {
         this.updatedAt = updatedAt;
         this.followedUser = followedUser;
         this.following = following;
+        this.tweets= tweets;
     }
 
     public Long getId() {
@@ -160,6 +167,10 @@ public class User {
     public void setRememberToken(String rememberToken) {
         this.rememberToken = rememberToken;
     }
+    
+    public List<Tweet> getTweets() { return tweets; }
+
+    public void setTweets(List<Tweet> tweets) {this.tweets = tweets;}
 
     @Override
     public boolean equals(Object o) {

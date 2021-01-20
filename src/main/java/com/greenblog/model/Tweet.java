@@ -24,8 +24,9 @@ public class Tweet {
     private String content;
 
     @NotNull
-    @Column(name = "user_id")
-    private Long userId;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
     @NotNull
     @Column(name = "created_at")
@@ -40,10 +41,10 @@ public class Tweet {
     public Tweet() {
     }
 
-    public Tweet(Long id, String content, Long userId, Date createdAt, Date updatedAt) {
+    public Tweet(Long id, String content, User user, Date createdAt, Date updatedAt) {
         this.id = id;
         this.content = content;
-        this.userId = userId;
+        this.user = user;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
@@ -64,12 +65,12 @@ public class Tweet {
         this.content = content;
     }
 
-    public Long getUserId() {
-        return userId;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public Date getCreatedAt() {
@@ -93,12 +94,12 @@ public class Tweet {
         if (this == o) return true;
         if (!(o instanceof Tweet)) return false;
         Tweet tweet = (Tweet) o;
-        return getId() == tweet.getId() && getUserId() == tweet.getUserId() && Objects.equals(getContent(), tweet.getContent()) && Objects.equals(getCreatedAt(), tweet.getCreatedAt()) && Objects.equals(getUpdatedAt(), tweet.getUpdatedAt());
+        return getId() == tweet.getId() && getUser() == tweet.getUser() && Objects.equals(getContent(), tweet.getContent()) && Objects.equals(getCreatedAt(), tweet.getCreatedAt()) && Objects.equals(getUpdatedAt(), tweet.getUpdatedAt());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getContent(), getUserId(), getCreatedAt(), getUpdatedAt());
+        return Objects.hash(getId(), getContent(), getUser(), getCreatedAt(), getUpdatedAt());
     }
 
     @Override
@@ -106,7 +107,7 @@ public class Tweet {
         return "Tweet{" +
                 "id=" + id +
                 ", content='" + content + '\'' +
-                ", userId=" + userId +
+                ", userId=" + user.getId() +
                 ", createdAt=" + createdAt +
                 ", updatedAt=" + updatedAt +
                 '}';
